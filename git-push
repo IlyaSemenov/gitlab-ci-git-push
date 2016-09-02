@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+if [ -z "$SSH_PRIVATE_KEY" ]; then >&2 echo "Set SSH_PRIVATE_KEY environment variable"; exit 1; fi
+SSH_HOST=$(echo $1 | sed 's/.*@//' | sed 's/:.*//')
+if [ -z "$SSH_HOST" ]; then >&2 echo "Usage: $0 <user@git.host:project> [<branch>]"; exit 1; fi
+
+# TODO: skip on multiple runs
+mkdir -p ~/.ssh
+echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+git push $1 HEAD:${2:-master} --force
