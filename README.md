@@ -1,6 +1,6 @@
-# Gitlab CI runner that pushes to git
+# GitLab CI runner that pushes to git
 
-This Gitlab CI runner image allows to deploy a Gitlab project to a remote Git repo (useful for Dokku, Heroku, Deis, etc.)
+This GitLab CI runner image allows to deploy a GitLab project to a remote Git repo (useful for Dokku, Heroku, Deis, etc.)
 
 ## How to use
 
@@ -20,7 +20,7 @@ deploy to production:
   script: git-push dokku@dokku.me:myapp
 ```
 
-Go to Gitlab > Project > Settings > Variables, and create a variable `SSH_PRIVATE_KEY`:
+Go to GitLab > Project > Settings > CI/CD Pipelines > Secret Variables, and add a variable `SSH_PRIVATE_KEY`:
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
