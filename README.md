@@ -28,8 +28,16 @@ Go to GitLab > Project > Settings > CI/CD Pipelines > Secret Variables, and add 
 -----END RSA PRIVATE KEY-----
 ```
 
+### Pushing to a branch other than master
+
+By default, `git-push` will push to branch `master` of a remote repository (that's what Dokku wants). You can override this with:
+
+```console
+git-push user@git.host:repo branch
+```
+
 ### Pushing to Git running on a non-standard port
 
-```
-git-push ssh://git@mypass.host:8022/foo/bar.git:myapp
+```console
+git-push ssh://dokku@dokku.me:8022/myapp
 ```
