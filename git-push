@@ -3,6 +3,7 @@
 url=$1
 branch=$2
 
+
 if [ -z "$SSH_PRIVATE_KEY" ]; then
 	>&2 echo "Set SSH_PRIVATE_KEY environment variable"
 	exit 1
@@ -25,4 +26,10 @@ echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 ssh-keyscan -H $ssh_port "$ssh_host" >> ~/.ssh/known_hosts
 
-git push $url HEAD:${branch:-master} --force
+# based on the STOP_FORCE_PUSH env variable, disalbe the force push to GitHub
+if [ -z "$STOP_FORCE_PUSH" ]; then
+	git push $url HEAD:${branch:-master} --force
+else
+	>&2 echo "Disabled force push to $2"
+	git push $url HEAD:${branch:-master}
+fi
