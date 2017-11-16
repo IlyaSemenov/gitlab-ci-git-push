@@ -41,3 +41,7 @@ git-push user@git.host:repo branch
 ```console
 git-push ssh://dokku@dokku.me:8022/myapp
 ```
+
+### Not doing force push
+
+By default, git push will be forced. You can disable force push by setting environment variable `DISABLE_FORCE_PUSH` to any value.
