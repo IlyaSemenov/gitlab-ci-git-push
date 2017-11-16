@@ -28,7 +28,7 @@ Go to GitLab > Project > Settings > CI/CD Pipelines > Secret Variables, and add 
 -----END RSA PRIVATE KEY-----
 ```
 
-Also add the Secret Variable `STOP_FORCE_PUSH` if you want to disable the default force push to your repository. The if-clause just checks if `STOP_FORCE_PUSH` is empty or not so feel free to add something like `true` as a value.
+Also add the Secret Variable `SKIP_FORCE_PUSH` if you want to skip the default force push to your repository. The if-clause just checks if `SKIP_FORCE_PUSH` is empty or not so feel free to add something like `true` as a value.
 
 ### Pushing to a branch other than master
 
