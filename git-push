@@ -26,7 +26,7 @@ echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 ssh-keyscan -H $ssh_port "$ssh_host" >> ~/.ssh/known_hosts
 
-# based on the STOP_FORCE_PUSH env variable, disalbe the force push to GitHub
+# based on the STOP_FORCE_PUSH env variable, disalbe the force push to your configured Git repository
 if [ -z "$STOP_FORCE_PUSH" ]; then
 	git push $url HEAD:${branch:-master} --force
 else
