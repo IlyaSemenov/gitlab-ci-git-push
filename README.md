@@ -28,6 +28,8 @@ Go to GitLab > Project > Settings > CI/CD Pipelines > Secret Variables, and add 
 -----END RSA PRIVATE KEY-----
 ```
 
+Also add the Secret Variable `SKIP_FORCE_PUSH` if you want to skip the default force push to your repository. The if-clause just checks if `SKIP_FORCE_PUSH` is empty or not so feel free to add something like `true` as a value.
+
 ### Pushing to a branch other than master
 
 By default, `git-push` will push to branch `master` of a remote repository (that's what Dokku wants). You can override this with:

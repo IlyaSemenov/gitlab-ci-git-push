@@ -25,4 +25,10 @@ echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 ssh-keyscan -H $ssh_port "$ssh_host" >> ~/.ssh/known_hosts
 
-git push $url HEAD:${branch:-master} --force
+# based on the SKIP_FORCE_PUSH env variable, disalbe the force push to your configured Git repository
+if [ -z "$SKIP_FORCE_PUSH" ]; then
+	git push $url HEAD:${branch:-master} --force
+else
+	>&2 echo "Skipping force push to $2"
+	git push $url HEAD:${branch:-master}
+fi
