@@ -20,7 +20,7 @@ deploy to production:
   script: git-push dokku@dokku.me:myapp
 ```
 
-Go to GitLab > Project > Settings > CI/CD Pipelines > Secret Variables, and add a variable `SSH_PRIVATE_KEY`:
+Go to GitLab > Project > Settings > CI/CD > Secret Variables, and add a variable `SSH_PRIVATE_KEY`:
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
