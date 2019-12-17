@@ -28,7 +28,7 @@ Go to GitLab > Project > Settings > CI/CD > Secret Variables, and add a variable
 -----END RSA PRIVATE KEY-----
 ```
 
-Make sure your private ssh key is not encrypted, or Gitlab won't be able to authenticate. You'll know if it is encrypted if you open it up and the top has something like:
+Make sure your private ssh key is not encrypted, or Gitlab won't be able to authenticate to your SSH server. You'll know if it is encrypted if you open it up and the top has something like:
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
