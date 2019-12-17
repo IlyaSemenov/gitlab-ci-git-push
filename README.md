@@ -28,6 +28,23 @@ Go to GitLab > Project > Settings > CI/CD > Secret Variables, and add a variable
 -----END RSA PRIVATE KEY-----
 ```
 
+Make sure your private ssh key is not encrypted, or Gitlab won't be able to authenticate. You'll know if it is encrypted if you open it up and the top has something like:
+
+```
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+```
+
+If it is, generate a new key. You may need to install `openssh-keygen` and then run `ssh-keygen -C my_email` where `my_email` can be any comment. 
+
+You can do this from a docker container running Alpine like this:
+
+```
+apk update && \
+apk add --no-cache \
+openssh-keygen
+```
+
 ### Pushing to a branch other than master
 
 By default, `git-push` will push to branch `master` of a remote repository (that's what Dokku wants). You can override this with:
