@@ -35,15 +35,7 @@ Make sure your private ssh key is not encrypted, or Gitlab won't be able to auth
 Proc-Type: 4,ENCRYPTED
 ```
 
-If it is, generate a new key. You may need to install `openssh-keygen` and then run `ssh-keygen -C my_email` where `my_email` can be any comment. 
-
-You can do this from a docker container running Alpine like this:
-
-```
-apk update && \
-apk add --no-cache \
-openssh-keygen
-```
+If it is, you can decrypt it by running: `openssl rsa -in enc.key -out dec.key`
 
 ### Pushing to a branch other than master
 
