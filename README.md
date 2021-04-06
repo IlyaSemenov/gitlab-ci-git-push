@@ -9,6 +9,11 @@ Create `.gitlab-ci.yml`:
 ```yaml
 image: ilyasemenov/gitlab-ci-git-push
 
+variables:
+  # Prevent "shallow update not allowed" error.
+  # Set it to maximum possible count of *new* commits that you foresee being pushed to a remote.
+  GIT_DEPTH: 1000
+
 stages:
   - deploy
 
