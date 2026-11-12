@@ -20,8 +20,8 @@ stages:
 deploy to production:
   stage: deploy
   environment: production
-  only:
-    - master
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script: git-push dokku@dokku.me:myapp
 ```
 
